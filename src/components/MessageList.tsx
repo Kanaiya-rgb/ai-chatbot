@@ -34,7 +34,7 @@ export default function MessageList({
     <CardContent className="flex-1 p-0 relative overflow-hidden">
       <ScrollArea className="h-full" ref={scrollAreaRef}>
         <motion.div
-          className="p-6 space-y-6"
+          className="p-4 md:p-6 space-y-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -130,18 +130,18 @@ function MessageBubble({
       initial="hidden"
       animate="visible"
       exit="exit"
-      whileHover={{ scale: 1.02 }}
-      className={`flex gap-4 ${isUser ? "justify-end" : "justify-start"}`}
+      whileHover={{ scale: 1.03 }}
+      className={`flex gap-3 md:gap-4 ${isUser ? "justify-end" : "justify-start"}`}
     >
       {/* Avatar for assistant messages */}
       {!isUser && (
         <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileHover={{ scale: 1.13, rotate: 6 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <Avatar className="h-10 w-10 ring-2 ring-primary/20">
+          <Avatar className="h-11 w-11 ring-4 ring-primary/30 shadow-lg -mt-2">
             <AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground">
-              <Bot className="h-5 w-5" />
+              <Bot className="h-6 w-6" />
             </AvatarFallback>
           </Avatar>
         </motion.div>
@@ -149,21 +149,21 @@ function MessageBubble({
 
       {/* Message bubble */}
       <motion.div
-        className={`max-w-[75%] rounded-2xl px-4 py-3 relative ${
+        className={`max-w-[80vw] md:max-w-[70%] rounded-3xl px-5 py-3 relative border shadow-lg backdrop-blur-md ${
           isUser
-            ? "bg-gradient-to-br from-primary to-primary/90 text-primary-foreground ml-12 rounded-br-md"
-            : "bg-gradient-to-br from-muted to-muted/80 text-muted-foreground rounded-bl-md"
+            ? "bg-gradient-to-br from-primary/90 to-primary text-primary-foreground ml-8 rounded-br-lg border-primary/30"
+            : "bg-gradient-to-br from-muted/80 to-accent/60 text-muted-foreground rounded-bl-lg border-accent/20"
         }`}
         whileHover={{
-          scale: 1.02,
+          scale: 1.04,
           boxShadow: isUser
-            ? "0 10px 25px -5px rgba(0,0,0,0.1)"
-            : "0 10px 25px -5px rgba(0,0,0,0.05)",
+            ? "0 10px 25px -5px rgba(0,0,0,0.13)"
+            : "0 10px 25px -5px rgba(0,0,0,0.08)",
         }}
         transition={{ type: "spring", stiffness: 300 }}
       >
         <motion.p
-          className="text-sm leading-relaxed whitespace-pre-wrap"
+          className="text-base leading-relaxed whitespace-pre-wrap"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
@@ -172,7 +172,7 @@ function MessageBubble({
         </motion.p>
 
         <motion.p
-          className="text-xs opacity-60 mt-2"
+          className="text-xs opacity-60 mt-2 text-right"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ delay: 0.2 }}
@@ -184,8 +184,8 @@ function MessageBubble({
         <div
           className={`absolute bottom-0 w-3 h-3 ${
             isUser
-              ? "right-0 bg-primary transform rotate-45 translate-x-1 translate-y-1"
-              : "left-0 bg-muted transform rotate-45 -translate-x-1 translate-y-1"
+              ? "right-0 bg-primary/80 border-b border-r border-primary/40 transform rotate-45 translate-x-1 translate-y-1"
+              : "left-0 bg-accent/70 border-b border-l border-accent/30 transform rotate-45 -translate-x-1 translate-y-1"
           }`}
         />
       </motion.div>
@@ -193,12 +193,12 @@ function MessageBubble({
       {/* Avatar for user messages */}
       {isUser && (
         <motion.div
-          whileHover={{ scale: 1.1, rotate: -5 }}
+          whileHover={{ scale: 1.13, rotate: -6 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <Avatar className="h-10 w-10 ring-2 ring-secondary/20">
+          <Avatar className="h-11 w-11 ring-4 ring-secondary/30 shadow-lg -mt-2">
             <AvatarFallback className="bg-gradient-to-br from-secondary to-secondary/80 text-secondary-foreground">
-              <User className="h-5 w-5" />
+              <User className="h-6 w-6" />
             </AvatarFallback>
           </Avatar>
         </motion.div>

@@ -10,18 +10,13 @@ import { cardVariants } from "@/constants/animations";
 
 export default function Chat() {
   const {
-    // State
     messages,
     input,
     isLoading,
     buttonRotation,
-
-    // Refs
     scrollAreaRef,
     messagesEndRef,
     textareaRef,
-
-    // Actions
     setInput,
     sendMessage,
     clearConversation,
@@ -36,14 +31,14 @@ export default function Chat() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/80 p-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/80 p-1 md:p-4 flex items-center justify-center">
       <motion.div
         variants={cardVariants}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-5xl h-[85vh]"
+        className="w-full max-w-7xl h-[95vh] flex items-center justify-center"
       >
-        <Card className="h-full flex flex-col shadow-2xl border-0 bg-card/95 backdrop-blur-sm">
+        <Card className="h-full w-full flex flex-col shadow-2xl border-0 bg-card/80 backdrop-blur-xl rounded-3xl md:rounded-[2rem] p-1 md:p-8">
           {/* Header with title and clear button */}
           <ChatHeader
             messageCount={messages.length}

@@ -21,25 +21,25 @@ export default function ChatHeader({
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <CardHeader className="border-b bg-gradient-to-r from-card via-card/90 to-card rounded-t-lg">
+    <CardHeader className="border-b-2 border-border/40 bg-gradient-to-r from-card/80 via-card/60 to-card/80 rounded-t-2xl backdrop-blur-md shadow-md">
       <motion.div
-        className="flex items-center justify-between"
+        className="flex items-center justify-between px-2 md:px-4 py-2"
         variants={headerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-5">
           <motion.div
-            className="p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl"
-            whileHover={{ scale: 1.05, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
+            className="p-4 bg-gradient-to-br from-primary/30 to-accent/30 rounded-2xl shadow-lg border border-primary/10"
+            whileHover={{ scale: 1.08, rotate: 8 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <MessageSquare className="h-6 w-6 text-primary" />
+            <MessageSquare className="h-8 w-8 text-primary drop-shadow" />
           </motion.div>
 
           <div>
             <motion.h1
-              className="text-2xl font-bold text-foreground bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text"
+              className="text-3xl font-extrabold text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text drop-shadow-sm tracking-tight"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -48,7 +48,7 @@ export default function ChatHeader({
             </motion.h1>
 
             <motion.p
-              className="text-sm text-muted-foreground"
+              className="text-base text-muted-foreground mt-1"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -61,7 +61,7 @@ export default function ChatHeader({
         </div>
 
         {/* Action buttons container */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {/* Theme toggle button */}
           <motion.div
             variants={buttonVariants}
@@ -72,13 +72,13 @@ export default function ChatHeader({
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className="text-xs hover:bg-accent/50 transition-all duration-200"
+              className="text-xs hover:bg-accent/60 shadow transition-all duration-200 rounded-lg"
               title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
             >
               {theme === "light" ? (
-                <Moon className="h-3 w-3 mr-1" />
+                <Moon className="h-4 w-4 mr-1" />
               ) : (
-                <Sun className="h-3 w-3 mr-1" />
+                <Sun className="h-4 w-4 mr-1" />
               )}
               {theme === "light" ? "Dark" : "Light"}
             </Button>
@@ -95,9 +95,9 @@ export default function ChatHeader({
                 variant="outline"
                 size="sm"
                 onClick={onClearChat}
-                className="text-xs hover:bg-destructive/10 hover:text-destructive hover:border-destructive/20 transition-all duration-200"
+                className="text-xs hover:bg-destructive/20 hover:text-destructive hover:border-destructive/30 shadow transition-all duration-200 rounded-lg"
               >
-                <RotateCcw className="h-3 w-3 mr-1" />
+                <RotateCcw className="h-4 w-4 mr-1" />
                 Clear Chat
               </Button>
             </motion.div>
